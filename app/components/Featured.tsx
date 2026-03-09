@@ -1,8 +1,24 @@
+"use client";
+
 import { featuredProducts } from "../data";
 import Image from "next/image";
 import React from "react";
+import { useCart } from "@/app/context/CartContext";
 
 const Featured = () => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (item: (typeof featuredProducts)[number]) => {
+    addToCart({
+      id: item.id,
+      title: item.title,
+      img: item.img,
+      price: item.price,
+      quantity: 1,
+      option: item.options?.[0] ?? { title: "Default", additionalPrice: 0 },
+    });
+  };
+
   return (
     <div className="w-full overflow-x-auto text-red-500">
       {/* WRAPPER */}
@@ -24,7 +40,10 @@ const Featured = () => {
               <h1 className="text-xl font-bold uppercase xl:text-2xl 2xl:text-3xl">{item.title}</h1>
               <p className="px-4 pb-2 2xl:px-8">{item.desc}</p>
               <span className="text-xl font-bold">${item.price.toFixed(2)}</span>
-              <button className="bg-red-500 text-white p-2 rounded-md">
+              <button
+                onClick={() => handleAddToCart(item)}
+                className="bg-red-500 text-white p-2 rounded-md"
+              >
                 Add to Cart
               </button>
             </div>

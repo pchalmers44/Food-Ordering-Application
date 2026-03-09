@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const data = [
@@ -39,7 +40,9 @@ const Slider = () => {
         <h1 className="text-3xl text-center uppercase p-4 sm:text-4xl md:p-10 md:text-5xl xl:text-7xl">
           {data[currentSlide].title}
         </h1>
-        <button className="bg-red-500 text-white py-4 px-8">Order Now</button>
+        <Link href="/menu" className="bg-red-500 text-white py-4 px-8">
+          Order Now
+        </Link>
       </div>
       {/* IMAGE CONTAINER */}
       <div className="w-full flex-1 relative min-h-[40vh] md:min-h-[50vh] lg:min-h-0">
