@@ -23,7 +23,7 @@ const Featured = () => {
             <div className="flex-1 flex flex-col items-center justify-center text-center gap-4">
               <h1 className="text-xl font-bold uppercase xl:text-2xl 2xl:text-3xl">{item.title}</h1>
               <p className="px-4 pb-2 2xl:px-8">{item.desc}</p>
-              <span className="text-xl font-bold">${item.price}</span>
+              <span className="text-xl font-bold">${item.price.toFixed(2)}</span>
               <button className="bg-red-500 text-white p-2 rounded-md">
                 Add to Cart
               </button>
